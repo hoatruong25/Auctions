@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="MongoDB.Entities" Version="22.0.0" />
     </ItemGroup>
 
