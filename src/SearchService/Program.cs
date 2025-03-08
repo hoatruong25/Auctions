@@ -1,4 +1,5 @@
 using System.Net;
+using MassTransit;
 using Polly;
 using Polly.Extensions.Http;
 using SearchService.Data;
@@ -10,6 +11,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddHttpClient<AuctionSvcHttpClient>();
+
+// Add service mass transit for connection to message broker
+builder.Services.AddMassTransit(
+    s =>
+    {
+        s.UsingRabbitMq(
+            (context, cfg) =>
+            {
+                cfg.ConfigureEndpoints(context);
+            }
+        );
+    }
+);
 
 var app = builder.Build();
 

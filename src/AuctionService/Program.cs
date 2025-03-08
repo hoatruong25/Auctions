@@ -1,5 +1,6 @@
 using AuctionService.Data;
 using AuctionService.RequestHelpers;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,19 @@ builder.Services.AddDbContext<AuctionDbContext>(
 );
 
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+
+// Add service mass transit for connection to message broker
+builder.Services.AddMassTransit(
+    s =>
+    {
+        s.UsingRabbitMq(
+            (context, cfg) =>
+            {
+                cfg.ConfigureEndpoints(context);
+            }
+        );
+    }
+);
 
 var app = builder.Build();
 app.UseAuthorization();
