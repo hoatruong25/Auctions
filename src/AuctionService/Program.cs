@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+/* Add services to the container. */
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AuctionDbContext>(
     opt =>
@@ -16,10 +16,21 @@ builder.Services.AddDbContext<AuctionDbContext>(
 
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
-// Add service mass transit for connection to message broker
+/* Add service mass transit for connection to message broker */
 builder.Services.AddMassTransit(
     s =>
     {
+        /* Add outbox for retry send msg when msg send fails */
+        s.AddEntityFrameworkOutbox<AuctionDbContext>(
+            o =>
+            {
+                o.QueryDelay = TimeSpan.FromSeconds(10);
+
+                o.UsePostgres();
+                o.UseBusOutbox();
+            });
+        
+        /* Config type of message broker is using */
         s.UsingRabbitMq(
             (context, cfg) =>
             {
