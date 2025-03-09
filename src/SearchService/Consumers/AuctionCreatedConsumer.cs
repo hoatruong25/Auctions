@@ -19,10 +19,12 @@ public class AuctionCreatedConsumer : IConsumer<AuctionCreated>
     {
         Console.WriteLine("--> Consumer auction created " + context.Message.Id);
         
-        // Save to database
-        // Don't use automapper because It's affects system performance
         var item = _mapper.Map<Item>(context.Message);
 
+        /* Fake case error when import to database */
+        if (item.Model == "Foo") throw new ArgumentException("Cannot sell cars with name of Foo");
+
+        /* Save to database */
         await item.SaveAsync();
     }
 }

@@ -1,3 +1,4 @@
+using AuctionService.Consumers;
 using AuctionService.Data;
 using AuctionService.RequestHelpers;
 using MassTransit;
@@ -29,6 +30,9 @@ builder.Services.AddMassTransit(
                 o.UsePostgres();
                 o.UseBusOutbox();
             });
+        
+        s.AddConsumersFromNamespaceContaining<AuctionCreatedFaultConsumer>();
+        s.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("auction",  false));
         
         /* Config type of message broker is using */
         s.UsingRabbitMq(
