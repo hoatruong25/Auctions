@@ -102,6 +102,10 @@ public class AuctionController : ControllerBase
         auction.Item.Mileage = updateAuctionDto.Mileage ?? auction.Item.Mileage;
         auction.Item.Year = updateAuctionDto.Year ?? auction.Item.Year;
 
+        /* Publish msg to RabbitMQ */
+        var updatedAuction = _mapper.Map<AuctionDto>(auction);
+        await _publishEndpoint.Publish(_mapper.Map<AuctionUpdated>(updatedAuction));
+        
         var result = await _context.SaveChangesAsync() > 0;
 
         if (result) return Ok();
@@ -118,6 +122,9 @@ public class AuctionController : ControllerBase
         if (auction == null) return NotFound();
         
         _context.Auctions.Remove(auction);
+        
+        /* Publish msg to RabbitMQ */
+        await _publishEndpoint.Publish(new AuctionDeleted { Id = id.ToString() });
         
         var result = await _context.SaveChangesAsync() > 0;
         

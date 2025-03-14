@@ -20,6 +20,8 @@ builder.Services.AddMassTransit(
     s =>
     {
         s.AddConsumersFromNamespaceContaining<AuctionCreatedConsumer>();
+        s.AddConsumersFromNamespaceContaining<AuctionUpdatedConsumer>();
+        s.AddConsumersFromNamespaceContaining<AuctionDeletedConsumer>();
         
         /* Add prefix  to queue name => avoid conflict with other services */
         s.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("search", false));

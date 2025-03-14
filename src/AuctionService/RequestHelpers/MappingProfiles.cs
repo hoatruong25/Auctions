@@ -14,6 +14,9 @@ public class MappingProfiles : Profile
         CreateMap<CreateAuctionDto, Auction>()
             .ForMember(d => d.Item, o => o.MapFrom(s => s));
         CreateMap<CreateAuctionDto, Auction>();
+        
+        /* Add mapping for message broker contracts */
         CreateMap<AuctionDto, AuctionCreated>();
+        CreateMap<AuctionDto, AuctionUpdated>();
     }
 }
