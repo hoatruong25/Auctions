@@ -1,5 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# 
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F140999F-81A7-483E-9DF2-C7003D328CFD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionService", "src\AuctionService\AuctionService.csproj", "{B3493E57-F3C4-49E8-BBE1-FE1013208084}"
@@ -7,6 +8,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchService", "src\SearchService\SearchService.csproj", "{3CE29DD7-5488-4879-BD58-9670B50CA36A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "src\Contracts\Contracts.csproj", "{8D6835BF-5473-4FC5-8886-ED940C2315D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService", "src\IdentityService\IdentityService.csproj", "{370EE850-8028-44D8-8154-86193ED69190}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +29,15 @@ Global
 		{8D6835BF-5473-4FC5-8886-ED940C2315D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D6835BF-5473-4FC5-8886-ED940C2315D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D6835BF-5473-4FC5-8886-ED940C2315D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{370EE850-8028-44D8-8154-86193ED69190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{370EE850-8028-44D8-8154-86193ED69190}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{370EE850-8028-44D8-8154-86193ED69190}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{370EE850-8028-44D8-8154-86193ED69190}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B3493E57-F3C4-49E8-BBE1-FE1013208084} = {F140999F-81A7-483E-9DF2-C7003D328CFD}
 		{3CE29DD7-5488-4879-BD58-9670B50CA36A} = {F140999F-81A7-483E-9DF2-C7003D328CFD}
 		{8D6835BF-5473-4FC5-8886-ED940C2315D1} = {F140999F-81A7-483E-9DF2-C7003D328CFD}
+		{370EE850-8028-44D8-8154-86193ED69190} = {F140999F-81A7-483E-9DF2-C7003D328CFD}
 	EndGlobalSection
 EndGlobal
