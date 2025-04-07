@@ -1,23 +1,32 @@
 services:
   postgres:
     image: postgres
-    environment:
-      POSTGRES_PASSWORD: postgrespw
-    ports:
-      - 5432:5432
-    volumes:
-      - /var/lib/postgresql/data
-  mongo:
+
+  mongodb:
     image: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: rootpw
-    ports:
-      - 27017:27017
-    volumes:
-      - /var/lib/mongodb/data
+  
   rabbitmq:
     image: rabbitmq:3-management-alpine
-    ports:
-      - 5672:5672
-      - 15672:15672
+#services:
+#  postgres:
+#    image: postgres
+#    environment:
+#      POSTGRES_PASSWORD: postgrespw
+#    ports:
+#      - 5432:5432
+#    volumes:
+#      - /var/lib/postgresql/data
+#  mongo:
+#    image: mongo
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: rootpw
+#    ports:
+#      - 27017:27017
+#    volumes:
+#      - /var/lib/mongodb/data
+#  rabbitmq:
+#    image: rabbitmq:3-management-alpine
+#    ports:
+#      - 5672:5672
+#      - 15672:15672
