@@ -29,6 +29,19 @@
       - 5672:5672
       - 15672:15672
   
+  auctionservice:
+    container_name: auctionservice
+    ports:
+      - 7001:80
+    depends_on:
+      - postgres
+      - mongodb
+      - rabbitmq
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+      - 
+  
 volumes:
     pgdata:
     mongodata:
